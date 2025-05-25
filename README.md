@@ -1,3 +1,5 @@
+# Results
+
 ### NHITS and LSTM Performance for Each Individual Stock
 
 ![image](https://github.com/user-attachments/assets/07b745c3-6483-4768-bab4-59caa17a9b29)
