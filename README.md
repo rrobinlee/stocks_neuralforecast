@@ -1,4 +1,4 @@
-#### MAE and MAPE of Each Individual Stock
+### NHITS and LSTM Performance of Each Individual Stock
 
 ![image](https://github.com/user-attachments/assets/07b745c3-6483-4768-bab4-59caa17a9b29)
 
@@ -13,7 +13,7 @@ The MAPE represents the predictions' average percentage difference from the actu
 
 </br>
 
-#### MAE and MAPE of Overall Portfolio
+### NHITS and LSTM Performance of Overall Portfolio
 
 * NHITS Portfolio MAE: $13,630.83
 * NHITS Portfolio MAPE: 0.0370
