@@ -1,6 +1,6 @@
 ## Model Evalutation
 
-To evaluate the two models, I will utilize the `NeuralForecast` package's built-in cross validation function. Because the data is sequential, I will backtest through a series of windows, defined in the function as `n_windows`. `step_size` controls the distance between each cross-validation window, so we set it equal to the forecast horizon. By doing so, I can perform chained cross-validation where the windows do not overlap. Emulating real life scenarios, we will retrain our model using new observed data (sequential segments of `test_df`) before making the next set of predictions.
+To evaluate the two models, I utilize the `NeuralForecast` package's built-in cross validation function. Because the data is sequential, I backtest through a series of windows, defined in the function as `n_windows`. `step_size` controls the distance between each cross-validation window, so we set it equal to the forecast horizon. By doing so, I can perform chained cross-validation where the windows do not overlap. Emulating real life scenarios, we will retrain our model using new observed data (sequential segments of `test_df`) before making the next set of predictions.
 
 ### Rolling Window Backtests with Refitting
 
@@ -19,7 +19,7 @@ The MAPE represents the predictions' average percentage difference from the actu
 
 ![image](https://github.com/user-attachments/assets/274d3608-67e7-42fb-841c-c3123710716c)
 
-Analyzing their performance through each window of the backtest, both the LSTM and NHITS models struggle to predict significant spikes or valleys. This is expected, because the model cannot see into the future and anticipate significant socioeconomic or market-moving events. Starting from February 2025, both models continue to predict a stable or upward trend at each window despite the actual prices decreasing (see JPM, WFC, BAC, TSM, and AMD). Thus, we see a step-like pattern—the models only "sees" a stock has actually decreased at the next forecast window, causing the model to rapidly adjust its forecast to match the last-known true price and creating a jump. This has occured the most for bank stocks, since they are historically quite stable. Having learned this stable pattern, the models frequently predict low movement at each window. Similarly, for stocks that spiked suddenly (such as BAESY and INTC), the models fail to predict a significant jump. Finally, we see that volatile tickers—most notably INTC—are the most challenging to predict, as expected.
+Analyzing their performance through each window of the backtest, both the LSTM and NHITS models struggle to predict significant spikes or valleys. This is expected, because the model cannot see into the future and anticipate significant socioeconomic or market-moving events. Starting from February 2025, both models continue to predict a stable or upward trend at each window despite the actual prices decreasing (see JPM, WFC, BAC, TSM, and AMD). Thus, we see a step-like pattern—the models only "sees" a stock has actually decreased at the next forecast window, causing the model to rapidly adjust its forecast to match the last-known true price and creating a jump. 
 
 ### Computing Overall Portfolio Value
 
