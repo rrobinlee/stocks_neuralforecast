@@ -1,6 +1,10 @@
-## Rolling Window Backtests with Refitting
+## Model Evalutation
 
 To evaluate the two models, I will utilize the `NeuralForecast` package's built-in cross validation function. Because the data is sequential, I will backtest through a series of windows, defined in the function as `n_windows`. `step_size` controls the distance between each cross-validation window, so we set it equal to the forecast horizon. By doing so, I can perform chained cross-validation where the windows do not overlap. Emulating real life scenarios, we will retrain our model using new observed data (sequential segments of `test_df`) before making the next set of predictions.
+
+### Rolling Window Backtests with Refitting
+
+Since I am using the `NeuralForecast` package's cross validation function, I need to input the full dataframe; this is because the method is designed to simulate how my model would perform at sequential cutoff dates. The cutoff date is determined by the number windows and the forecast horizon for each window. For each window, the model is trained up to a cutoff date and then forecasts the next `forecast_horizon` steps. The window slides forward by `step_size`, and the process repeats `n_windows` times.
 
 #### MAE for Each Individual Stock
 
@@ -17,7 +21,7 @@ The MAPE represents the predictions' average percentage difference from the actu
 
 Analyzing their performance through each window of the backtest, both the LSTM and NHITS models struggle to predict significant spikes or valleys. This is expected, because the model cannot see into the future and anticipate significant socioeconomic or market-moving events. Starting from February 2025, both models continue to predict a stable or upward trend at each window despite the actual prices decreasing (see JPM, WFC, BAC, TSM, and AMD). Thus, we see a step-like pattern—the models only "sees" a stock has actually decreased at the next forecast window, causing the model to rapidly adjust its forecast to match the last-known true price and creating a jump. This has occured the most for bank stocks, since they are historically quite stable. Having learned this stable pattern, the models frequently predict low movement at each window. Similarly, for stocks that spiked suddenly (such as BAESY and INTC), the models fail to predict a significant jump. Finally, we see that volatile tickers—most notably INTC—are the most challenging to predict, as expected.
 
-## Computing Overall Portfolio Value
+### Computing Overall Portfolio Value
 
 In addition to predicting each stock, I also want to compute the predicted total value of my simulated portfolio. With both models' outputs, I first calculate how many shares of each stock I initially "bought" at the start of 2019. Then, I pivot the forecasts from the `NeuralForecast` long format—which consists of each stock ticker, the closing dates, the NHITS forecasted prices, and the LSTM forecasted prices—back into the original wide-format. Finally, to calculate the final porfolio value, I multiply the number of shares for each stock by the last price. I can calculate forecasted profit by subtracting the cumulation of predicted prices by the initial investment, $100,000.
 
