@@ -1,12 +1,4 @@
-## Model Evalutation
-
-To evaluate the two models, I utilize the `NeuralForecast` package's built-in cross validation function. Because the data is sequential, I backtest through a series of windows, defined in the function as `n_windows`. `step_size` controls the distance between each cross-validation window, so we set it equal to the forecast horizon. By doing so, I can perform chained cross-validation where the windows do not overlap. Emulating real life scenarios, we will retrain our model using new observed data (sequential segments of `test_df`) before making the next set of predictions.
-
-### Rolling Window Backtests with Refitting
-
-Since I am using the `NeuralForecast` package's cross validation function, I need to input the full dataframe; this is because the method is designed to simulate how my model would perform at sequential cutoff dates. The cutoff date is determined by the number windows and the forecast horizon for each window. For each window, the model is trained up to a cutoff date and then forecasts the next `forecast_horizon` steps. The window slides forward by `step_size`, and the process repeats `n_windows` times.
-
-#### MAE for Each Individual Stock
+#### MAE and MAPE of Each Individual Stock
 
 ![image](https://github.com/user-attachments/assets/07b745c3-6483-4768-bab4-59caa17a9b29)
 
@@ -15,30 +7,25 @@ Comparing the MAE between both models, we can see that NHINTS performs signfican
 
 The MAPE represents the predictions' average percentage difference from the actual value; a score less than 10% is generally considered acceptable to good. Analyzing the percentages for each model, we can see that both models excelled when predicting JPM (off by 4-5%) and RTX (off by 2-3%), while struggling with INTC (off by 9%) and AMD (off by 6%) the most. Finally, comparing the actual dollar value with the two forecasted values, we see that both models tend to underestimate the final prices.
 
-#### Forecasts for Each Individual Stock
+#### Plots of Forecasts for Each Individual Stock
 
 ![image](https://github.com/user-attachments/assets/274d3608-67e7-42fb-841c-c3123710716c)
 
 Analyzing their performance through each window of the backtest, both the LSTM and NHITS models struggle to predict significant spikes or valleys. This is expected, because the model cannot see into the future and anticipate significant socioeconomic or market-moving events. Starting from February 2025, both models continue to predict a stable or upward trend at each window despite the actual prices decreasing (see JPM, WFC, BAC, TSM, and AMD). Thus, we see a step-like pattern—the models only "sees" a stock has actually decreased at the next forecast window, causing the model to rapidly adjust its forecast to match the last-known true price and creating a jump. 
 
-### Computing Overall Portfolio Value
+</br>
 
-In addition to predicting each stock, I also want to compute the predicted total value of my simulated portfolio. With both models' outputs, I first calculate how many shares of each stock I initially "bought" at the start of 2019. Then, I pivot the forecasts from the `NeuralForecast` long format—which consists of each stock ticker, the closing dates, the NHITS forecasted prices, and the LSTM forecasted prices—back into the original wide-format. Finally, to calculate the final porfolio value, I multiply the number of shares for each stock by the last price. I can calculate forecasted profit by subtracting the cumulation of predicted prices by the initial investment, $100,000.
+#### MAE and MAPE of Overall Portfolio
 
-#### Overall Portfolio Value Forecast Accuracy
+* NHITS Portfolio MAE: $13,630.83
+* NHITS Portfolio MAPE: 0.0370
+* LSTM  Portfolio MAE: $14,265.63
+* LSTM Portfolio MAPE: 0.0389
 
-NHITS Portfolio MAE: $13,630.83
-
-NHITS Portfolio MAPE: 0.0370
-
-LSTM  Portfolio MAE: $14,265.63
-
-LSTM Portfolio MAPE: 0.0389
-
-Final Portfolio Values:
-* Actual: $415,992.42
-* NHITS: $365,356.78
-* LSTM : $387,639.02
+* Final Portfolio Values:
+  * Actual: $415,992.42
+  * NHITS: $365,356.78
+  * LSTM : $387,639.02
 
 With MAPEs slightly below 0.04 or predictions off by only 3-4% on average from the true values, I believe that both models are fairly accurate. As expected, the NHITS model performs slightly better in terms of minimizing loss. While the LSTM final value is technically closer to the actual final value, I believe that this is not as important of an indicator compared to the MAPE or MAE. Furthermore, this is just one point-in-time value, so the LSTM model will not always be closer to the actual. While the absolute error is upwards of $14,000, I believe that this amount is fairly negligent considering my initial investment is $100,000 and the final output is nearly four times as much.  
 
