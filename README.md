@@ -11,8 +11,6 @@ The MAPE represents the predictions' average percentage difference from the actu
 
 ![image](https://github.com/user-attachments/assets/274d3608-67e7-42fb-841c-c3123710716c)
 
-Analyzing their performance through each window of the backtest, both the LSTM and NHITS models struggle to predict significant spikes or valleys. This is expected, because the model cannot see into the future and anticipate significant socioeconomic or market-moving events. Starting from February 2025, both models continue to predict a stable or upward trend at each window despite the actual prices decreasing (see JPM, WFC, BAC, TSM, and AMD). Thus, we see a step-like pattern—the models only "sees" a stock has actually decreased at the next forecast window, causing the model to rapidly adjust its forecast to match the last-known true price and creating a jump. 
-
 </br>
 
 #### MAE and MAPE of Overall Portfolio
@@ -33,4 +31,3 @@ With MAPEs slightly below 0.04 or predictions off by only 3-4% on average from t
 
 ![image](https://github.com/user-attachments/assets/35295be7-cb7f-4b43-8c45-886043a0d986)
 
-Because the full portfolio is just an aggregation of the individual stocks earlier, the issues I have already discussed also apply here—the predictions are in a step-like pattern, where the beginning of each window "jumps" to re-oriente with the actual data. While their forecasts appear to roughly follow the shape of the actual portfolio quite well, I believe the NHITS is a bit more stable. Furthermore, I tested both models on different forecast windows, ranging from 7 to 56 days (1-week to 8-weeks). As the window size increases over 14 days, the LSTM suffers significantly while the NHITS MAE and MAPE remain fairly consistent. In future use-cases, I would probably stick with just NHITS.
