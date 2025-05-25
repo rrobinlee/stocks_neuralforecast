@@ -1,4 +1,4 @@
-### NHITS and LSTM Performance of Each Individual Stock
+### NHITS and LSTM Performance for Each Individual Stock
 
 ![image](https://github.com/user-attachments/assets/07b745c3-6483-4768-bab4-59caa17a9b29)
 
@@ -13,7 +13,9 @@ The MAPE represents the predictions' average percentage difference from the actu
 
 </br>
 
-### NHITS and LSTM Performance of Overall Portfolio
+### NHITS and LSTM Performance for Portfolio
+
+In addition to predicting each stock, I also want to compute the predicted total value of my simulated portfolio. With both models' outputs, I first calculate how many shares of each stock I initially "bought" at the start of 2019. Then, I pivot the forecasts from the `NeuralForecast` long format—which consists of each stock ticker, the closing dates, the NHITS forecasted prices, and the LSTM forecasted prices—back into the original wide-format. Finally, to calculate the final porfolio value, I multiply the number of shares for each stock by the last price. I can calculate forecasted profit by subtracting the cumulation of predicted prices by the initial investment, $100,000.
 
 * NHITS Portfolio MAE: $13,630.83
 * NHITS Portfolio MAPE: 0.0370
