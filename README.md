@@ -4,7 +4,7 @@ In this project, I leverage historical stock market data to construct a sample p
 1. Produce individual forecasts for each stock
 2. Compute an estimated final portfolio value
 
-After constructing the models, I backtest through a set of rolling windows—each consisting of a pre-defined number of "look-ahead" days—before refitting after the cutoff dates. To measure performance, I compute the Mean Absolute Error and Mean Absolute Percentage Error of each individual asset, as well as the total portfolio. Comparing the two models, NHITS is better for long-horizon forecasts.
+After constructing the models, I backtest through a set of rolling windows—each consisting of a pre-defined number of "look-ahead" days—before refitting after the cutoff dates. To measure performance, I compute the Mean Absolute Error and Mean Absolute Percentage Error of each individual asset, as well as the total portfolio. In summary, NHITS is far more stable and better for long-horizon forecasts than LSTM.
 
 <mark>**Note:** Please see notebook for full report</mark>
 * Sections: Assumptions & Hypotheses, EDA, Feature Engineering, Modeling Approach, Model Justification, Evaluation [[see below](#Evaluation)], Potential Improvements [[see below](#Potential-Improvements)]
