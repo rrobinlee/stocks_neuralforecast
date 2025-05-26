@@ -63,7 +63,7 @@ With MAPEs slightly below 0.04 or predictions off by only 3-4% on average from t
    
    Note that the GARCH residuals do not use NHITS forecasts as expected returns but GARCH’s own fitted mean.
 
-   In order to generate the conditional covariance matrix ($\Sigma_t$), I "sandwich" the time-varying correlation matrix ($R_t$) between two diagnonal matrices (triple matrix product) consisting of the univariate GARCH ouputs ($D_t$)—which are the conditional standard deviations/volatilities for each stock ($\sigma_{i,t}$) I have already calculated in Step A. This final matrix ($\Sigma_t = D_t R_t D_t$) accounts for time-varying volatilities and correlations. Thankfully, there are Python packages that simplify this process. 
+   In order to generate the conditional covariance matrix ($\Sigma_t$ or $H_t$), I "sandwich" the time-varying correlation matrix ($R_t$) between two diagnonal matrices (triple matrix product) consisting of the univariate GARCH ouputs ($D_t$)—which are the conditional standard deviations/volatilities for each stock ($\sigma_{i,t}$) I have already calculated in Step A. This final matrix ($\Sigma_t = D_t R_t D_t$) accounts for time-varying volatilities and correlations. Thankfully, there are Python packages that simplify this process. 
 
    > **Note**: The covariance matrix of asset returns can also be calculated using historical prices, which only requires calculating the log returns for each stock and computing the covariance matrix. Because this method relies on stationary data, it is only well-suited for extremely stable markets and is not as accurate as using GARCH. However, this is a lot easier and simpler to implement, requiring less computational resources and time.
 
