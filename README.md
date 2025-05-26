@@ -16,8 +16,6 @@ Packages used in model development:
 
 </br>
 
-</br>
-
 ___
 
 ## Evaluation
