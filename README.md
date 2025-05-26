@@ -1,6 +1,16 @@
-## NHITS and LSTM Performance for Each Individual Stock
+**[Please see notebook for modeling approach, development, and future improvements]**
+
+</br>
+
+---
+
+</br>
+
+### NHITS and LSTM Performance for Each Individual Stock
 
 ![image](https://github.com/user-attachments/assets/07b745c3-6483-4768-bab4-59caa17a9b29)
+
+For most of the stocks, the NHITS model is—on average—off by less than $5, with only three tickers with a higher average error. Similarly, the LSTM is usually off by less than $10 dollars, with only two tickers with a higher average error. The MAPE represents the predictions' average percentage difference from the actual value; a score less than 10% is generally considered acceptable to good. Analyzing the percentages for each model, we can see that both models excelled when predicting JPM (off by 4-5%) and RTX (off by 2-3%), while struggling with INTC (off by 9%) and AMD (off by 6%) the most.
 
 #### Plots of Forecasts for Each Individual Stock
 
@@ -8,7 +18,7 @@
 
 </br>
 
-## NHITS and LSTM Performance for Portfolio
+### NHITS and LSTM Performance for Portfolio
 
 In addition to predicting each stock, I also want to compute the predicted total value of my simulated portfolio. With both models' outputs, I first calculate how many shares of each stock I initially "bought" at the start of 2019. Then, I pivot the forecasts from the `NeuralForecast` long format—which consists of each stock ticker, the closing dates, the NHITS forecasted prices, and the LSTM forecasted prices—back into the original wide-format. Finally, to calculate the final porfolio value, I multiply the number of shares for each stock by the last price. I can calculate forecasted profit by subtracting the cumulation of predicted prices by the initial investment, $100,000.
 
