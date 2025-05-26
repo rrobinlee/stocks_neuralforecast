@@ -1,4 +1,4 @@
-# Multivariate Stock Forecasting using Deep Learning Models
+# Multivariate Stock Forecasting using Deep Learning
 
 In this project, I seek to develop two deep learning models (NHITS, LSTM) that will forecast a set of 9 stocks. By incorporating a base investment amount and corresponding weights for each asset, my ultimate objective is to:
 1. Produce individual forecasts for each stock
