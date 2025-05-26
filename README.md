@@ -1,4 +1,4 @@
-**[Please see notebook for modeling approach, development, and future improvements]**
+[Please see notebook for modeling approach, development, and justification]
 
 </br>
 
@@ -40,3 +40,26 @@ With MAPEs slightly below 0.04 or predictions off by only 3-4% on average from t
 
 ![image](https://github.com/user-attachments/assets/35295be7-cb7f-4b43-8c45-886043a0d986)
 
+</br>
+
+### Potential Improvements
+
+1. By only using neural forecasting models (LSTM and NHITS), this project is fairly limited in scope. In future iterations, I would like to explore the different types of time series models offered in the `NeuralForecast`, `MLForecast`, and `StatsForecast` packages. By incorporating contemporary machine learning models—such as Temporal Fusion Transformers (TFT) and Autoformer—alongside the traditional multivariate statistical models—such as Vector Autoregression and Multiple Regression—I can easily juxtapose each models' benefits or drawbacks. TFTs in particular are extremely popular right now and have demonstrated extremely high accuracy. 
+
+
+   Furthermore, I can leverage external models to forecast a specific variable, such as volatility or volume, and implement them as an exogenous variable within `futr_exog_list`. For example, by leveraging the `StatsForecast` package, I am able to combine my current models with predictions from ARCH or GARCH (Generalized Autoregressive Conditional Heteroskedasticity) models. These are ideal when forecasting non-constant volatility over time and computing risk estimations. GARCH assumes that the variance of the error term follows an autoregressive moving average (ARMA) process, allowing it to model how the volatility changes based on past information—most notably squared residuals (past price changes) and previous volatility estimates. As such, I can employ a GARCH model to predict each asset's conditional volatility, before feeding the outputs into my NHITS model as an input feature. Because `NeuralForecast` requires long-format data, I believe I can easily implement this variable using a loop. 
+
+
+2. Expanding on the benefits of using both NHITS and GARCH, I seek to utilize these models for portfolio optimization and risk management methods. As mentioned earlier, GARCH can be used to forecast volatility, while NHITS can be used to generate expected prices or returns ($\mu$) for each asset in my portfolio. However, in this context, GARCH is severly limited as it only works with a univariate time series (a single stock). Building upon the GARCH model, I can use DCC-GARCH (Dynamic Conditional Correlation GARCH), which models how volatilities and correlations between assets change over time. The DCC-GARCH will:
+
+    >1. Compute each stock's conditional variance at time $t$ using a univariate GARCH
+    >2. Standardize the residuals (shock in returns) from each GARCH model
+    >3. Employ the Dynamic Conditional Correlation (DCC) process to construct the covariance matrix of standardized residuals.
+   
+   The covariance matrix is then converted into a time-varying correlaton matrix. Note that the GARCH residuals do not use NHITS forecasts as expected returns but GARCH’s own fitted mean. After wrapping the correlation matrix with two diagnonal matrices consisting of the univariate GARCH ouputs—which are the conditional standard deviations or volatilities for each stock I have calculated in Step A—I have the full conditional covariance matrix ($\Sigma$). This matrix accounts for how correlations between assets change over time. Thankfully, there are Python packages that simplify this process. 
+
+   > **Note**: The covariance matrix of asset returns can also be calculated using historical prices, which only requires calculating the log returns for each stock and computing the covariance matrix. Because this method relies on stationary data, it is only well-suited for extremely stable markets and is not as accurate as using GARCH. However, this is a lot easier and simpler to implement, requiring less computational resources and time.
+
+   Finally, dividing the expected portfolio returns from my NHITS model ($\mu$) by the covariance matrix of asset returns ($\Sigma$), I can calculate the individual asset weights that maximize the Sharpe ratio. Assuming it exists, I can also subtract the portfolio returns by the risk-free rate. This process computes the optimal portfolio weights for each stock depending on the model forecasts. Thus, it is extremely important the the model parameters are up-to-date.
+
+3. Because historical stock data is frequently revised and updated retroactively—accounting for splits, dividends, and corrections—the training data quality often changes day-to-day, affecting hyperparameter tuned and feature engineered variables. As such, for fundamental-based strategies, portfolio managers tend to re-tune weekly or monthly to ensure parameters are up-to-date while preserving computational costs. For a real-life scenario, I believe frequent training and incorporating a model drift detection mechanism is necessary, such as monitoring performance metrics day-to-day to ensure the models are within a desired error range. 
