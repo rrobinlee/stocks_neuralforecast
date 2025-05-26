@@ -6,7 +6,7 @@ In this project, I seek to develop two deep learning models (NHITS, LSTM) that w
 
 Comparing the models, I backtest through a set of rolling windows—each consisting of a pre-defined number of "look-ahead" days—before refitting after the cutoff dates. To measure performance, I compute the MAE and MAPE of each individual asset, as well as the total portfolio. While both forecasts appear to follow the actual portfolio, I believe the NHITS is more robust to noise, handles multi-seasonality and trends better, and is faster to train. For long-horizon forecasts, I prefer NHITS due to its stability, accuracy, and reliability.
 
-<mark>**Note 1:** </mark> I want to stress that neural networks are **not** well-suited for forecasting raw stock prices in most practical cases. 
+<mark>**Note 1:** </mark> I want to stress that neural networks are **not well-suited for forecasting raw stock prices** in most practical cases. 
 * Markets are non-deterministic
 * LSTMs and NHITS are not robust to structural breaks or regime shifts without adaptation (this is exemplified in the plots below).
 * Deep networks need consistent patterns—markets follow the random walk hypothesis, no continuity (high variance and low bias).
