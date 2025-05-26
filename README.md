@@ -1,4 +1,4 @@
-## Forecasting a Stock Portfolio using Deep Learning Models
+# Forecasting a Stock Portfolio using Deep Learning Models
 
 <mark>**Note:** Please see notebook for modeling approach, development, and justification
 
@@ -51,7 +51,7 @@ With MAPEs slightly below 0.04 or predictions off by only 3-4% on average from t
 
 </br>
 
-### Potential Improvements
+## Potential Improvements
 
 1. By only using neural forecasting models (LSTM and NHITS), this project is fairly limited in scope. In future iterations, I would like to explore the different types of time series models offered in the `NeuralForecast`, `MLForecast`, and `StatsForecast` packages. By incorporating contemporary machine learning models—such as Temporal Fusion Transformers (TFT) and Autoformer—alongside the traditional multivariate statistical models—such as Vector Autoregression and Multiple Regression—I can easily juxtapose each models' benefits or drawbacks. TFTs in particular are extremely popular right now and have demonstrated extremely high accuracy. 
 
