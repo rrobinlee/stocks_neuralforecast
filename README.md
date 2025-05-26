@@ -1,4 +1,4 @@
-## Predicting Stock Portfolio using NeuralForecast
+## Forecasting a Stock Portfolio using Deep Learning Models
 
 <mark>**Note:** Please see notebook for modeling approach, development, and justification
 
