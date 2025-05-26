@@ -9,13 +9,8 @@ Resources:
 
 </br>
 
-</br>
-
 ___
 
-</br>
-
-</br>
 
 ### NHITS and LSTM Rolling-Window Backtests per Stock
 
