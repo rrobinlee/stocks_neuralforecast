@@ -1,7 +1,15 @@
 # Portfolio Forecasting using Deep Learning Models
 
+In this project, I leverage historical stock market data to construct a sample portfolio, and predict its cumulative value through several months. Rather than forecast an individual stock or ETF—which is achievable using a univariate model—I seek to develop two deep learning models that will simultaneously forecast a set of 9 stocks across 3 industries: defense, finance, and tech. By incorporating a base investment amount and corresponding weights for each asset, my ultimate objective is to:
+1. Produce individual forecasts for each stock
+2. Compute an estimated final portfolio value
+
+After constructing the models, I backtest through a set of rolling windows—each consisting of a pre-defined number of "look-ahead" days—before refitting after the cutoff dates. To measure accuracy and performance, I compute the Mean Absolute Error (MAE) and Mean Absolute Percentage Error (MAPE) of each individual asset, as well as the total portfolio.
+
 <mark>**Note:** Please see notebook for full report</mark>
 * Sections: Assumptions & Hypotheses, EDA, Feature Engineering, Modeling Approach, Model Justification, Evaluation [[see below](#Evaluation)], Potential Improvements [[see below](#Potential-Improvements)]
+
+</br>
 
 Packages used in model development:
 * [NeuralForecast](https://nixtlaverse.nixtla.io/neuralforecast/docs/getting-started/introduction.html), [yfinance](https://pypi.org/project/yfinance/), [ray tune](https://docs.ray.io/en/latest/tune/index.html), [PyTorch](https://pytorch.org/), [scikit-learn](https://scikit-learn.org/stable/index.html)
