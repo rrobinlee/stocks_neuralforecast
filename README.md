@@ -11,7 +11,7 @@ Comparing the models, I backtest through a set of rolling windows—each consist
 <mark>**Note 1:** </mark> I want to stress that neural networks are <mark> **not well-suited for forecasting raw stock prices**</mark>. 
 * Markets are non-deterministic.
 * LSTMs and NHITS are not robust to structural breaks or regime shifts without adaptation [[see here](#plot-of-forecasts-for-each-individual-stock-1)].
-* Deep networks rely on consistent patterns (temporal dependencies)—markets follow the random walk hypothesis (high variance, low bias).
+* Deep networks rely on consistent patterns (temporal dependencies)—markets usually follow the random walk hypothesis (creating high variance, low bias).
 * Neural networks are prone to overfitting—signal-to-noise ratio in market data tends to be low.
 * Instead of forecasting the price itself, it is better to **predict direction or probability**:
   * Classification models to predict probability of upward/downward regimes.
