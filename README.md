@@ -25,23 +25,25 @@ ___
 I backtest both models through a sequence of windows (defined `n_windows`), where `step_size` controls the number of days within each window. By setting `refit=True`, the training set is gradually expanded with new observed values each subsequent window, and the model is retrained before making the next set of predictions (see testing windows).
 
 #### Table of Stock Metrics [1]
-* Last Date: 2025-05-20, Forecast Horizon: 14 Days, Number of Windows: 14
-![image](https://github.com/user-attachments/assets/64d078a1-97b5-41b7-a5e7-48916c850b83)
-
-#### Table of Stock Metrics [2]
-* Last Date: 2025-05-25, Forecast Horizon: 10 Days, Number of Windows: 20
-![image](https://github.com/user-attachments/assets/5765d111-417a-45fc-a0d1-20fda3bdc390)
+>Last Date: 2025-05-20, Forecast Horizon: 14 Days, Number of Windows: 14
+>
+>![image](https://github.com/user-attachments/assets/64d078a1-97b5-41b7-a5e7-48916c850b83)
 
 For most of the stocks, the NHITS model is—on average—off by less than $5, with only three tickers with a higher average error. Similarly, the LSTM is usually off by less than $10 dollars, with only two tickers with a higher average error. The MAPE represents the predictions' average percentage difference from the actual value; a score less than 10% is generally considered acceptable to good. Analyzing the percentages for each model, we can see that both models excelled when predicting JPM (off by 4-5%) and RTX (off by 2-3%), while struggling with INTC (off by 9%) and AMD (off by 6%) the most.
 
-#### Plot of Forecasts for Each Individual Stock [1] 
-* Last Date: 2025-05-20, Forecast Horizon: 14 Days, Number of Windows: 14
+#### Table of Stock Metrics [2]
+> Last Date: 2025-05-25, Forecast Horizon: 10 Days, Number of Windows: 20
+> 
+>![image](https://github.com/user-attachments/assets/5765d111-417a-45fc-a0d1-20fda3bdc390)
 
+Using a different forecast horizon, number of windows, and last date still generates roughly the same pattern with NHITS performing better than LSTM. Note that because the forecast horizon is smaller, there are improvements in both model outputs.
+
+#### Plot of Forecasts for Each Individual Stock [1] 
+>Last Date: 2025-05-20, Forecast Horizon: 14 Days, Number of Windows: 14
 ![image](https://github.com/user-attachments/assets/9fd5c285-fe8c-422a-9c95-1cc244654b36)
 
 #### Plot of Forecasts for Each Individual Stock [2]
-* Last Date: 2025-05-25, Forecast Horizon: 10 Days, Number of Windows: 20
-
+>Last Date: 2025-05-25, Forecast Horizon: 10 Days, Number of Windows: 20
 ![image](https://github.com/user-attachments/assets/47f4df01-0fc3-46c9-8a2c-a1306511aafc)
 
   
@@ -52,7 +54,7 @@ For most of the stocks, the NHITS model is—on average—off by less than $5, w
 In addition to predicting each stock, I compute the predicted total value of my simulated portfolio. With both models' outputs, I calculate how many shares of each stock I initially "bought" at the start of 2019 and multiply the number of shares for each stock by the last price.
 
 #### Portfolio Metrics [1]
-* Last Date: 2025-05-20, Forecast Horizon: 14 Days, Number of Windows: 14
+>Last Date: 2025-05-20, Forecast Horizon: 14 Days, Number of Windows: 14
 ```
 NHITS Portfolio MAE: $13,630.83
 NHITS Portfolio MAPE: 0.0370
@@ -66,7 +68,7 @@ LSTM : $387,639.02
 ```
 
 #### Portfolio Metrics [2]
-* Last Date: 2025-05-25, Forecast Horizon: 10 Days, Number of Windows: 20
+>Last Date: 2025-05-25, Forecast Horizon: 10 Days, Number of Windows: 20
 ```
 NHITS Portfolio MAE: $9,892.75
 NHITS Portfolio MAPE: 0.0325
@@ -79,20 +81,17 @@ NHITS: $338,439.85
 LSTM : $342,872.27
 ```
 
-With MAPEs slightly below 0.04 or predictions off by only 3-4% on average from the true values, I believe that both models are fairly accurate. As expected, the NHITS model performs slightly better in terms of minimizing loss. While the LSTM final value is technically closer to the actual final value, I believe that this is not as important of an indicator compared to the MAPE or MAE. Furthermore, this is just one point-in-time value, so the LSTM model will not always be closer to the actual. While the absolute error is upwards of $14,000, I believe that this amount is fairly negligent considering my initial investment is $100,000.  
+With MAPEs slightly below 0.04 or predictions off by only 3-4% on average from the true values, I believe that both models are fairly accurate. As expected, the NHITS model performs slightly better in terms of minimizing loss. While the LSTM final value is technically closer to the actual final value, I believe that this is not as important of an indicator compared to the MAPE or MAE. Furthermore, this is just one point-in-time value, so the LSTM model will not always be closer to the actual.
 
 #### Plot of Overall Portfolio Value Forecast Accuracy [1]
-* Last Date: 2025-05-20, Forecast Horizon: 14 Days, Number of Windows: 14
-  
+>Last Date: 2025-05-20, Forecast Horizon: 14 Days, Number of Windows: 14 
 ![image](https://github.com/user-attachments/assets/35295be7-cb7f-4b43-8c45-886043a0d986)
 
 #### Plot of Overall Portfolio Value Forecast Accuracy [2]
-* Last Date: 2025-05-25, Forecast Horizon: 10 Days, Number of Windows: 20
-
+>Last Date: 2025-05-25, Forecast Horizon: 10 Days, Number of Windows: 20
 ![image](https://github.com/user-attachments/assets/306b0226-c0c6-4f99-96a6-66f67544fa56)
 
 
-As the window size increases over 14 days, the LSTM suffers significantly while the NHITS MAE and MAPE remain fairly consistent. In future use-cases, I would probably stick with just NHITS.
 
 </br>
 
