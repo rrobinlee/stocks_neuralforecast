@@ -1,6 +1,7 @@
 # Stock Portfolio Forecasting using Deep Learning Models
 
-<mark>**Note:** Please see notebook for modeling approach, development, and justification
+<mark>**Note:** Please see notebook for full report</mark>
+* Sections: Assumptions & Hypotheses, EDA, Feature Engineering, Modeling Approach, Model Justification, Evaluation (see below)
 
 Resources:
 * [NeuralForecast](https://nixtlaverse.nixtla.io/neuralforecast/docs/getting-started/introduction.html)
