@@ -11,9 +11,11 @@ Resources:
 
 ___
 
+
+
 </br>
 
-### NHITS and LSTM Backtest per Stock
+### NHITS and LSTM Rolling-Window Backtests per Stock
 
 I backtest both models through a series of windows (`n_windows`), where `step_size` controls the number of days within each window—by setting it equal to `forecast_horizon`, I perform chained cross-validation such that windows do not overlap. The training set is gradually expanded with new observed values and the model is retrained before making the next set of predictions (see testing windows).
 
