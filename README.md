@@ -27,7 +27,7 @@ For most of the stocks, the NHITS model is—on average—off by less than $5, w
 
 ### NHITS and LSTM Performance for Portfolio
 
-In addition to predicting each stock, I also want to compute the predicted total value of my simulated portfolio. With both models' outputs, I  calculate how many shares of each stock I initially "bought" at the start of 2019 and multiply the number of shares for each stock by the last price.
+In addition to predicting each stock, I also compute the predicted total value of my simulated portfolio. With both models' outputs, I calculate how many shares of each stock I initially "bought" at the start of 2019 and multiply the number of shares for each stock by the last price.
 
 ```
 NHITS Portfolio MAE: $13,630.83
