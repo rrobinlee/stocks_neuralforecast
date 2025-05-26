@@ -1,4 +1,4 @@
-# Stock Portfolio Forecasting using Deep Learning Models
+# Portfolio Forecasting using Deep Learning Models
 
 <mark>**Note:** Please see notebook for full report</mark>
 * Sections: Assumptions & Hypotheses, EDA, Feature Engineering, Modeling Approach, Model Justification, Evaluation (see below)
