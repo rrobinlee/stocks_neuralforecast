@@ -26,8 +26,6 @@ Comparing the models, I backtest through a set of rolling windows—each consist
 Packages used in model development:
 * [NeuralForecast](https://nixtlaverse.nixtla.io/neuralforecast/docs/getting-started/introduction.html), [yfinance](https://pypi.org/project/yfinance/), [ray tune](https://docs.ray.io/en/latest/tune/index.html), [PyTorch](https://pytorch.org/), [scikit-learn](https://scikit-learn.org/stable/index.html)
 
-</br>
-
 ___
 
 ## Evaluation
