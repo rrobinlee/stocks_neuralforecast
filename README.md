@@ -50,6 +50,8 @@ With MAPEs slightly below 0.04 or predictions off by only 3-4% on average from t
 
 ![image](https://github.com/user-attachments/assets/35295be7-cb7f-4b43-8c45-886043a0d986)
 
+As the window size increases over 14 days, the LSTM suffers significantly while the NHITS MAE and MAPE remain fairly consistent. In future use-cases, I would probably stick with just NHITS.
+
 </br>
 
 ## Potential Improvements
