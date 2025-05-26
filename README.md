@@ -13,7 +13,7 @@ ___
 
 </br>
 
-### NHITS and LSTM Performance per Stock
+### NHITS and LSTM Backtest per Stock
 
 ![image](https://github.com/user-attachments/assets/8c2759d0-b14a-4d0a-95a9-05eb13fa34cf)
 
