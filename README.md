@@ -23,9 +23,6 @@ Comparing the models, I backtest through a set of rolling windows—each consist
 
 </br>
 
-Packages used in model development:
-* [NeuralForecast](https://nixtlaverse.nixtla.io/neuralforecast/docs/getting-started/introduction.html), [yfinance](https://pypi.org/project/yfinance/), [ray tune](https://docs.ray.io/en/latest/tune/index.html), [PyTorch](https://pytorch.org/), [scikit-learn](https://scikit-learn.org/stable/index.html)
-
 ___
 
 ## Evaluation
@@ -129,3 +126,12 @@ With MAPEs slightly below 0.04 or predictions off by only 3-4% on average from t
   
    In short, I use my NHITS forecasts to compute the optimal portfolio weights, maximizing the Sharpe ratio for a specific day. Then, I implement those  weights and track the actual returns. Finally, I compute the Sharpe ratio over a window (such as 30 days) to monitor how well my strategy is performing relative to its risk on a rolling basis. If the rolling ratio starts to fall significantly, then I know I need to re-train my model and re-optimize weights.
 
+---
+
+</br>
+
+
+
+
+Packages used in model development:
+* [NeuralForecast](https://nixtlaverse.nixtla.io/neuralforecast/docs/getting-started/introduction.html), [yfinance](https://pypi.org/project/yfinance/), [ray tune](https://docs.ray.io/en/latest/tune/index.html), [PyTorch](https://pytorch.org/), [scikit-learn](https://scikit-learn.org/stable/index.html)
