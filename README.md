@@ -15,7 +15,7 @@ ___
 
 ### NHITS and LSTM Performance per Stock
 
-![image](https://github.com/user-attachments/assets/42c1de6e-9373-483c-be1b-f29ac02f2d0b)
+![image](https://github.com/user-attachments/assets/a08fea7f-f3b5-4eca-b448-79e0c7993006)
 
 For most of the stocks, the NHITS model is—on average—off by less than $5, with only three tickers with a higher average error. Similarly, the LSTM is usually off by less than $10 dollars, with only two tickers with a higher average error. The MAPE represents the predictions' average percentage difference from the actual value; a score less than 10% is generally considered acceptable to good. Analyzing the percentages for each model, we can see that both models excelled when predicting JPM (off by 4-5%) and RTX (off by 2-3%), while struggling with INTC (off by 9%) and AMD (off by 6%) the most.
 
