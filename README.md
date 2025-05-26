@@ -21,7 +21,7 @@ For most of the stocks, the NHITS model is—on average—off by less than $5, w
 
 #### Plots of Forecasts for Each Individual Stock
 
-![image](https://github.com/user-attachments/assets/d8d45192-5f4a-4c6c-8fac-398c9c90d932)
+![image](https://github.com/user-attachments/assets/9fd5c285-fe8c-422a-9c95-1cc244654b36)
 
 </br>
 
