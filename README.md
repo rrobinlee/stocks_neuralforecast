@@ -57,7 +57,7 @@ With MAPEs slightly below 0.04 or predictions off by only 3-4% on average from t
 
 2. Expanding on the benefits of using both NHITS and GARCH, I seek to utilize these models for portfolio optimization and risk management applications. As mentioned earlier, GARCH can be used to forecast volatility ($\sigma_{t}$), while NHITS can be used to generate expected prices or returns ($\mu_t$) for each asset in my portfolio. However, in this context, GARCH is severely limited as it only works with a univariate time series (a single stock). Building upon the GARCH model, I can use DCC-GARCH (Dynamic Conditional Correlation GARCH), which predicts how volatilities and correlations between multiple assets change over time. The DCC-GARCH will:
 
-    >1. Compute each stock's conditional standard deviation ($\sigma^2_{i,t}$) at time $t$ using a univariate GARCH
+    >1. Compute each stock's conditional standard deviation ($\sigma_{i,t}$) at time $t$ using a univariate GARCH
     >2. Standardize the residuals (shock in returns) from each GARCH model ($z_{i,t}$)
     >3. Employ the Dynamic Conditional Correlation (DCC) process to construct the time-varying covariance matrix of the standardized residuals ($Q_t$) and the subsequent time-varying correlation matrix ($R_t=\text{diag}(Q_t)^{-1/2} Q_t \text{ diag}(Q_t)^{-1/2}$).
    
