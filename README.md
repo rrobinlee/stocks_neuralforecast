@@ -1,5 +1,10 @@
 <mark>**Note:** Please see notebook for modeling approach, development, and justification
 
+Resources:
+* [NeuralForecast](https://nixtlaverse.nixtla.io/neuralforecast/docs/getting-started/introduction.html)
+* [yfinance](https://pypi.org/project/yfinance/)
+* [ray tune](https://docs.ray.io/en/latest/tune/index.html)
+
 </br>
 
 ___
