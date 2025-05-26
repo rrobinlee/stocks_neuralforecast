@@ -1,6 +1,6 @@
 # Portfolio Forecasting using Deep Learning Models
 
-In this project, I leverage historical stock market data to construct a sample portfolio, and predict its cumulative value through several months. Rather than forecast an individual stock or ETF—which is achievable using a univariate model—I seek to develop two deep learning models that will simultaneously forecast a set of 9 stocks. By incorporating a base investment amount and corresponding weights for each asset, my ultimate objective is to:
+In this project, I seek to develop two deep learning models that will simultaneously forecast a set of 9 stocks. By incorporating a base investment amount and corresponding weights for each asset, my ultimate objective is to:
 1. Produce individual forecasts for each stock
 2. Compute an estimated final portfolio value
 
