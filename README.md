@@ -1,7 +1,7 @@
 # Portfolio Forecasting using Deep Learning Models
 
 <mark>**Note:** Please see notebook for full report</mark>
-* Sections: Assumptions & Hypotheses, EDA, Feature Engineering, Modeling Approach, Model Justification, Evaluation [[see below](#Evaluation)]
+* Sections: Assumptions & Hypotheses, EDA, Feature Engineering, Modeling Approach, Model Justification, Evaluation [[see below](#Evaluation)], Potential Improvements [[see below](#Potential-Improvements)]
 
 Packages used in model development:
 * [NeuralForecast](https://nixtlaverse.nixtla.io/neuralforecast/docs/getting-started/introduction.html), [yfinance](https://pypi.org/project/yfinance/), [ray tune](https://docs.ray.io/en/latest/tune/index.html), [PyTorch](https://pytorch.org/), [scikit-learn](https://scikit-learn.org/stable/index.html)
