@@ -1,10 +1,10 @@
 # Portfolio Forecasting using Deep Learning Models
 
-In this project, I seek to develop two deep learning models that will simultaneously forecast a set of 9 stocks. By incorporating a base investment amount and corresponding weights for each asset, my ultimate objective is to:
+In this project, I seek to develop two deep learning models (NHITS, LSTM) that will forecast a set of 9 stocks. By incorporating a base investment amount and corresponding weights for each asset, my ultimate objective is to:
 1. Produce individual forecasts for each stock
 2. Compute an estimated final portfolio value
 
-Comparing the models, I backtest through a set of rolling windows—each consisting of a pre-defined number of "look-ahead" days—before refitting after the cutoff dates. To measure performance, I compute the Mean Absolute Error and Mean Absolute Percentage Error of each individual asset, as well as the total portfolio. While their forecasts appear to roughly follow the shape of the actual portfolio quite well, I believe the NHITS is more robust to noise, handles multi-seasonality and trends better, and is faster to train. **In summary, for long-horizon forecasts, I prefer NHITS due to its stability, accuracy, and reliability.**
+Comparing the models, I backtest through a set of rolling windows—each consisting of a pre-defined number of "look-ahead" days—before refitting after the cutoff dates. To measure performance, I compute the MAE and MAPE of each individual asset, as well as the total portfolio. While both forecasts appear to roughly follow the shape of the actual portfolio, I believe the NHITS is more robust to noise, handles multi-seasonality and trends better, and is faster to train. **In summary, for long-horizon forecasts, I prefer NHITS due to its stability, accuracy, and reliability.**
 
 <mark>**Note:** Please see notebook for full report</mark>
 * Sections: Assumptions & Hypotheses, EDA, Feature Engineering, Modeling Approach, Model Justification, Evaluation [[see below](#Evaluation)], Potential Improvements [[see below](#Potential-Improvements)]
