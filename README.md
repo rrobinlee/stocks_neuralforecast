@@ -4,7 +4,7 @@ In this project, I develop two deep learning models—NHITS and LSTM—to foreca
 1. Produce individual forecasts for each stock
 2. Compute an estimated final portfolio value
 
-Comparing the models, I backtest through a set of rolling windows—each consisting of a pre-defined number of "look-ahead" days—before refitting after the cutoff dates. To measure performance, I compute the MAE and MAPE of each individual asset, as well as the total portfolio. While both forecasts appear to follow the actual portfolio, I believe the NHITS is more robust to noise, handles multi-seasonality and trends better, and is faster to train. For long-horizon forecasts, I prefer NHITS due to its stability, accuracy, and reliability.
+Comparing the models, I backtest through a set of rolling windows—each with a pre-defined number of "look-ahead" days—before refitting after the cutoff dates. To measure performance, I compute the MAE and MAPE of each individual asset, as well as the total portfolio. While both forecasts appear to follow the actual portfolio, I believe the NHITS is more robust to noise, handles multi-seasonality and trends better, and is faster to train. For long-horizon forecasts, I prefer NHITS due to its stability, accuracy, and reliability.
 
 </br>
 
